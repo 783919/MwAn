@@ -12,7 +12,7 @@
     <Name>AndroidVTProcess</Name>
     <RootNamespace>AndroidVTProcess</RootNamespace>
     <LaunchProvider>Standard Python launcher</LaunchProvider>
-    <CommandLineArguments>..\AndroidPullPackages\packages_sha1.txt 56c1e1145a1a746334656310b3b8cc001cae0ff2876d1e8a7bc1728a208db1d5</CommandLineArguments>
+    <CommandLineArguments>..\AndroidPullPackages\packages_sha1.txt &lt;your_API_Key&gt;</CommandLineArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
