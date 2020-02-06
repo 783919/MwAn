@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AndroidPullPackages", "AndroidPullPackages\AndroidPullPackages.pyproj", "{492A7688-8CDB-4850-B92C-DC4F752FCB31}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AndroidVTProcess", "AndroidVTProcess\AndroidVTProcess.pyproj", "{6EFAFCF3-EBBE-4C89-86FF-A1CAD50AAF69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{492A7688-8CDB-4850-B92C-DC4F752FCB31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{492A7688-8CDB-4850-B92C-DC4F752FCB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EFAFCF3-EBBE-4C89-86FF-A1CAD50AAF69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EFAFCF3-EBBE-4C89-86FF-A1CAD50AAF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BDACFF4-BF7A-4547-AAE5-3461171155E5}
+	EndGlobalSection
+EndGlobal
