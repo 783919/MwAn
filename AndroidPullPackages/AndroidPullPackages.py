@@ -20,7 +20,7 @@ def pull_android_packages(dest_folder):
     packages_line=subprocess.run(["adb", "shell", "pm", "list", "packages" ,"-f"],
       capture_output=True,text=True)
     if len(packages_line.stderr)>0 or not packages_line.stdout.startswith("package:"):
-      raise Exception("Adb package listing failed. Ensure that phone is in DEBUG mode and debugging is authorized")
+      raise Exception("Adb package listing failed. Ensure that phone is in DEBUG mode and debugging is authorized. Error: {0}".format(packages_line.stderr))
     packages = packages_line.stdout.splitlines()
     for package in packages:
       processed_packages+=1
@@ -30,8 +30,8 @@ def pull_android_packages(dest_folder):
       logging.info("Pulling {0} to destination folder {1}".format(pack_path,dest_folder))
       dest_path=os.path.join(dest_folder,pack_name + ".apk")
       pull_line=subprocess.run(["adb", "pull", pack_path,dest_path],capture_output=True,text=True)
-      if "error" in pull_line.stderr or not "1 file pulled" in pull_line.stdout:
-        logging.error("Cannot copy package {0}".format(pack_path))
+      if "error" in pull_line.stdout or not "1 file pulled" in pull_line.stdout:
+        logging.error("Cannot copy package {0}. Error: {1}".format(pack_path,pull_line.stdout))
       else:
         pulled_packages+=1
         h=hashlib.sha1()
@@ -62,8 +62,12 @@ try:
   dest_folder=sys.argv[1]
   if not(os.path.isdir(dest_folder)):
     raise Exception("Path {0} is not a valid folder".format(dest_folder))
-  if os.path.exists(PACKAGE_HASH_LIST_FILE):
-    os.remove(PACKAGE_HASH_LIST_FILE)
+  #if os.path.exists(PACKAGE_HASH_LIST_FILE):
+    #os.remove(PACKAGE_HASH_LIST_FILE)
+  g = open(PACKAGE_HASH_LIST_FILE,"w")
+  g.write("SHA1"+"\t"+"PACKAGE NAME"+"\n")
+  g.close()
+
   for filename in os.listdir(dest_folder):
     os.remove(os.path.join(dest_folder,filename))
   pull_android_packages(dest_folder)

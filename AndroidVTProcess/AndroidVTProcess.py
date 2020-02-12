@@ -102,7 +102,7 @@ def process_android_packages(sha1_list_file,nist_good_file_hash_list,
         if sha1 in already_checked_file_hash_list:
           logging.info("Package {0} already checked. No need to query Virus Total".format(package))
           r = open(REPORT_FNAME,"a")
-          r.write(sha1+"\t"+already_checked_file_hash_list[sha1]+"\n")
+          r.write(sha1+"\t"+already_checked_file_hash_list[sha1]+"\t"+"cache\n")
           r.close()
           res=re.split("\t",already_checked_file_hash_list[sha1].replace('\n', ''))
           if res[1]==POSITIVE_RES:
@@ -116,7 +116,7 @@ def process_android_packages(sha1_list_file,nist_good_file_hash_list,
         if sha1 in nist_good_file_hash_list:
           logging.info("Package {0} is in NIST good files hash list. No need to query Virus Total".format(package))
           r = open(REPORT_FNAME,"a")
-          r.write(sha1+"\t"+nist_good_file_hash_list[sha1]+NEGATIVE_RES+"\n")
+          r.write(sha1+"\t"+nist_good_file_hash_list[sha1]+NEGATIVE_RES+"\t"+"good files list\n")
           r.close()
           negatives+=1
           continue
@@ -139,7 +139,7 @@ def process_android_packages(sha1_list_file,nist_good_file_hash_list,
         g.write(sha1+"\t"+package+"\t"+result+"\n")
         g.close()
         r = open(REPORT_FNAME,"a")
-        r.write(sha1+"\t"+package+"\t"+result+"\n")
+        r.write(sha1+"\t"+package+"\t"+result+"\t"+"online\n")
         r.close()
       time.sleep(2)
     logging.info("Done. Processed packages: {0} . Positives: {1} Negatives: {2} Unknown: {3}".format(
@@ -201,8 +201,11 @@ try:
     raise Exception("VT_API_KEY syntax is not valid. Valid Virus Total api keys are 64 hex chars")
   if len(NIST_GFHL_ALLOWED_FILE_EXT)==0:
     raise Exception("Specify at least one file extension")
-  if os.path.exists(REPORT_FNAME):
-    os.remove(REPORT_FNAME)
+  #if os.path.exists(REPORT_FNAME):
+    #os.remove(REPORT_FNAME)
+  r = open(REPORT_FNAME,"w")
+  r.write("SHA1"+"\t"+"PACKAGE NAME"+"\t"+"RESULT"+"\t"+"SOURCE"+"\n")
+  r.close()
   nist_good_file_hash_list={}
   already_checked_files=read_already_checked_packages_file()
   if USE_NIST_GFHL:
