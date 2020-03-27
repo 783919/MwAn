@@ -18,7 +18,7 @@ Modules:
   
 NOTE: if adb server is not running when AndroidPullPackages.py is launched an error is shown, but server is started automatically. Just relaunch AndroidPullPackages.py and the package pulling process starts.
   
-- AndroidVTProcess.py (in folder AndroidVTProcess) reads file packages_sha1.txt and uploads each sha1 hash to Virus Total. A positive match indicates that at least one VT engine detected the hash as belonging to a malware, a negative indicates that the hash is known but no engine considers it as belonging to a malware, whereas unknown means that hash in not present in VT database. Should the process be interrupted for whatever reason, it will resume from where it left when AndroidVTProcess.py is relaunched.
+- AndroidVTProcess.py (in folder AndroidVTProcess) reads file packages_sha1.txt and uploads each sha1 hash to Virus Total. Hash_Android_RDS_v.2.67.txt is a NIST RDS hash set that speeds up verification process avoiding to query VT for known good files. A positive match indicates that at least one VT engine detected the hash as belonging to a malware, a negative indicates that the hash is known but no engine considers it as belonging to a malware, whereas unknown means that hash in not present in VT database. Should the process be interrupted for whatever reason, it will resume from where it left when AndroidVTProcess.py is relaunched.
 
 Usage: python AndroidVTProcess.py "path to hash list file" "Virus Total API Key"
  
