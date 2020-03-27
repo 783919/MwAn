@@ -3,7 +3,7 @@ Tools for Malware Analysis automation
 
 Copyright (c) 2020 corrado federici (corrado.federici@unibo.it)
 
-This simple project is an offline malware scanner for Android. It is made of a module that retrieves installed packages from an Android box, generating an hash list and a module that feeds Virus Total with the hashes to detect possible malware. As package rtrieval is decoupled from processing, it can be done in the field, quickly returning the device to the owner, if applicable.
+This simple project is an offline malware scanner for Android. It is made of a module that retrieves installed packages from an Android box, generating an hash list and a module that feeds Virus Total with the hashes to detect possible malware. As package retrieval is decoupled from processing, it can be done in the field, quickly returning the device to the owner, if applicable.
 
 Prerequisites:
 
