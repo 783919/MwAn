@@ -12,7 +12,7 @@ Prerequisites:
 
 Modules:
 
-- AndroidPullPackages.py (in folder AndroidPullPackages) pulls out the USB connected Android box all the packages allowed and puts them in a chosen folder. As there is no need that the device is rooted, not all the packages can be possibly retrieved, but according to tests performed success rate can range to 90 to 100%. The outcome is a packages sha1 hash list file named packages_sha1.txt. Folder AndroidPullPackages contains also the adb (Android Debug Bridge) server adb.exe with dlls. Once retrieval is done the device can be disconnected.
+- AndroidPullPackages.py (in folder AndroidPullPackages) pulls out the USB connected Android box all the packages allowed and puts them in a chosen folder. As there is no need that the device is rooted, not all the packages can be possibly retrieved, but according to tests performed success rate can range from 90 to 100%. The outcome is a packages sha1 hash list file named packages_sha1.txt. Folder AndroidPullPackages contains also the adb (Android Debug Bridge) server adb.exe with dlls. Once retrieval is done the device can be disconnected.
 
   Usage: python AndroidPullPackages.py "path to package folder"
   
