@@ -3,7 +3,7 @@ Tools for Malware Analysis automation
 
 Copyright (c) 2020 corrado federici (corrado.federici@unibo.it)
 
-This simple project is basically an offline malware scanner for Android. It is made of a module that retrieves installed packages from the Android box, generating an hash list and a module that feeds Virus Total with the hashes to detect possible malware. As package rtrieval is decoupled from processing, it can be done in the field, possibly quickly returning the device to the owner.
+This simple project is an offline malware scanner for Android. It is made of a module that retrieves installed packages from an Android box, generating an hash list and a module that feeds Virus Total with the hashes to detect possible malware. As package rtrieval is decoupled from processing, it can be done in the field, quickly returning the device to the owner, if applicable.
 
 Prerequisites:
 
@@ -18,7 +18,9 @@ Modules:
   
 NOTE: if adb server is not running when AndroidPullPackages.py is launched an error is shown, but server is started automatically. Just relaunch AndroidPullPackages.py and the package pulling process starts.
   
-- AndroidVTProcess.py (in folder AndroidVTProcess) reads file packages_sha1.txt and uploads each sha1 hash to Virus Total. A positive match indicates that at least one VT engine detected the hash as belonging to a malware, a negative indicates that the hash is known but no engine considers it as belonging to a malware, whereas unknown m
+- AndroidVTProcess.py (in folder AndroidVTProcess) reads file packages_sha1.txt and uploads each sha1 hash to Virus Total. A positive match indicates that at least one VT engine detected the hash as belonging to a malware, a negative indicates that the hash is known but no engine considers it as belonging to a malware, whereas unknown means that hash in not present in VT database. Should the process be interrupted for whatever reason, it will resume from where it left when AndroidVTProcess.py is relaunched.
+
+Usage: python AndroidVTProcess.py "path to hash list file" "Virus Total API Key"
  
 Tested with: Windows 10, Android Debug Bridge version 1.0.41, Python 3.8.1
 
